@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/icon.svg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Валентинка</title>
+</head>
+<body>
+    <header class="head">
+        <div class="wrap-h">
+            <div>
+                <a href="index.html"><img src="img/logo.svg" class="logo" alt="logo"></a>
+                <a href="index.html"><img src="img/icon.svg" class="icon" alt="logo"></a>
+            </div>
+            <div class="hui">
+                <a href="как.html"><p class="m">КАК?</p></a>
+                <a href="почему.html"><p class="m">ПОЧЕМУ?</p></a>
+                <a href="зачем.html"><p class="m">ЗАЧЕМ?</p></a>
+                <a href="qw.html"><p class="m">?</p></a>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="why">
+            <h1 class="p">? (какой же кринж...)</h1>
+            <div class="imgg">
+                <img src="img/дота.jpg" alt="" class="thumbnail" data-video="video/trubochka.mp4">
+                <img src="img/пикча.JPG" alt="" class="thumbnail" data-video="video/kroshka.mp4">
+                <img src="img/мани.JPG" alt="" class="thumbnail" data-video="video/xochy.mp4">
+                <img src="img/лит.JPG" alt="" class="thumbnail" data-video="video/lit.mp4">
+                <img src="img/лав.jpg" alt="" class="thumbnail" data-video="video/palchy.mp4">
+                <img src="img/лайк.jpg" alt="" class="thumbnail" data-video="video/mashina.mp4">
+                <img src="img/коти.jpg" alt="" class="thumbnail" data-video="video/solnche.mp4">
+                <img src="img/пиво.jpg" alt="" class="thumbnail" data-video="video/alkogol.mp4">
+                <img src="img/пылесос.jpg" alt="" class="thumbnail" data-video="video/zasos.mp4">
+                <img src="img/лаф.jpg" alt="" class="thumbnail" data-video="video/zvezda.mp4">
+                <img src="img/миша.jpg" alt="" class="thumbnail" data-video="video/padushka.mp4">
+                <img src="img/я.jpg" alt="" class="thumbnail" data-video="video/dysh.mp4">
+            </div>
+            <h1 class="p">КАРОЧЕ КЛИКАЙ НА ВСЕ</h1>
+        </div>
+    </main>
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close p">&times;</span>
+            <iframe id="modalVideo" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <video id="modalVideo" controls width="600">
+                <source src="" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+        </div>
+    </div>
+    <script>
+        function convertToEmbed(url) {
+            if (url.includes("youtube.com/watch?v=")) {
+                return url.replace("watch?v=", "embed/");
+            } else if (url.includes("rutube.ru/video/")) {
+                return url.replace("rutube.ru/video/", "rutube.ru/play/embed/");
+            }
+            return url;
+        }
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            // Добавляем обработчики событий после полной загрузки DOM
+            document.querySelectorAll('.thumbnail').forEach(img => {
+                img.addEventListener('click', function() {
+                    let videoSrc = this.getAttribute('data-video');
+                    let embedSrc = convertToEmbed(videoSrc);
+                    let modal = document.getElementById('videoModal');
+                    let video = document.getElementById('modalVideo');
+                    video.src = embedSrc;
+                    modal.classList.add('show');
+                });
+            });
+    
+            document.querySelector('.close').addEventListener('click', function() {
+                let modal = document.getElementById('videoModal');
+                let video = document.getElementById('modalVideo');
+                video.src = "";
+                modal.classList.remove('show');
+            });
+    
+            document.getElementById('videoModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    let modal = document.getElementById('videoModal');
+                    let video = document.getElementById('modalVideo');
+                    video.src = "";
+                    modal.classList.remove('show');
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>

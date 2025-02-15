@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/icon.svg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Валентинка</title>
+    <script>
+        function updateTimer() {
+            const startDate = new Date("2024-09-14T19:00:00");
+            const now = new Date();
+            let diff = now - startDate;
+
+            const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+            diff -= years * (1000 * 60 * 60 * 24 * 365);
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            diff -= days * (1000 * 60 * 60 * 24);
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            diff -= hours * (1000 * 60 * 60);
+            
+            const minutes = Math.floor(diff / (1000 * 60));
+            diff -= minutes * (1000 * 60);
+            
+            const seconds = Math.floor(diff / 1000);
+            
+            document.getElementById("timer").innerHTML = 
+                `<div class="timer-container">
+                    <div class="timer-item">
+                        <span class="p p2">${years}</span>
+                        <span class="m m2">года</span>
+                    </div>
+                    <div class="timer-item">
+                        <span class="p p2">${days}</span>
+                        <span class="m m2">дни</span>
+                    </div>
+                    <div class="timer-item">
+                        <span class="p p2">${hours}</span>
+                        <span class="m m2">часы</span>
+                    </div>
+                    <div class="timer-item">
+                        <span class="p p2">${minutes}</span>
+                        <span class="m m2">минуты</span>
+                    </div>
+                    <div class="timer-item">
+                        <span class="p p2">${seconds}</span>
+                        <span class="m m2">секунды</span>
+                    </div>
+                </div>`;
+        }
+        
+        setInterval(updateTimer, 1000);
+    </script>
+</head>
+<body>
+    <header class="head">
+        <div class="wrap-h">
+            <div>
+               <a href="index.html"><img src="img/logo.svg" class="logo" alt="logo"></a>
+               <a href="index.html"><img src="img/icon.svg" class="icon" alt="logo"></a>
+            </div>
+            <div class="hui">
+                <a href="как.html"><p class="m">КАК?</p></a>
+                <a href="почему.html"><p class="m">ПОЧЕМУ?</p></a>
+                <a href="зачем.html"><p class="m">ЗАЧЕМ?</p></a>
+                <a href="qw.html"><p class="m">?</p></a>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="wrap-m">
+            <div class="top">
+                <h1 class="p">мы вместе уже...</h1>
+                <p id="timer" class="timer-lol"></p>
+                <div class="ui">
+                    <img class="uuus" src="img/gera.svg" alt="">
+                    <p class="p p2"><3</p>
+                    <img class="uuus" src="img/tilt.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
